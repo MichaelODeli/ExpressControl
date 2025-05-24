@@ -39,7 +39,7 @@ layout = dmc.AppShell(
         dmc.AppShellNavbar(
             id="navbar",
             children=elements_main.get_navbar(),
-            p="md",
+            # p="sm",
         ),
         dmc.AppShellMain(
             [
@@ -54,7 +54,7 @@ layout = dmc.AppShell(
         "breakpoint": "sm",
         "collapsed": {"mobile": True, "desktop": False},
     },
-    padding="md",
+    padding="sm",
     id="appshell",
 )
 

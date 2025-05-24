@@ -1,5 +1,10 @@
 import dash_mantine_components as dmc
 from dash_iconify import DashIconify
+from dash import html
+
+
+def get_icon(icon):
+    return DashIconify(icon=icon, height=16)
 
 
 def get_header(brand):
@@ -30,7 +35,7 @@ def get_header(brand):
                         opened=False,
                         pt="7px",
                         persistence=True,
-                        persistence_type='session'
+                        persistence_type="session",
                     ),
                     dmc.Burger(
                         id="desktop-burger",
@@ -39,12 +44,24 @@ def get_header(brand):
                         opened=False,
                         pt="7px",
                         persistence=True,
-                        persistence_type='session'
+                        persistence_type="session",
                     ),
-                    dmc.Title(brand, order=3),
+                    # html.A(
+                    #     dmc.Title(brand, order=3),
+                    #     href="/",
+                    #     style={
+                    #         "text-decoration": "none",
+                    #         "color": "var(--mantine-color-text)",
+                    #     },
+                    # ),
+                    dmc.NavLink(
+                        label=dmc.Title(brand, order=3),
+                        href="/",
+                    ),
                 ],
                 h="100%",
                 px="md",
+                wrap="nowrap",
             ),
             theme_toggle,
         ],
@@ -58,9 +75,83 @@ def get_header(brand):
 def get_navbar():
     return dmc.ScrollArea(
         [
-            "60 links in a scrollable section",
-            *[dmc.Skeleton(height=28, mt="sm", animate=False) for _ in range(60)],
+            # dmc.NavLink(label="Управл"),
+            dmc.NavLink(
+                label="Управление макетом",
+                leftSection=get_icon(icon="tabler:gauge"),
+                childrenOffset=28,
+                active="partial",
+                persistence=True,
+                persistence_type="session",
+                children=[
+                    dmc.NavLink(
+                        label="Автоуправление поездами",
+                        active="exact",
+                        href="/train_controller/auto",
+                    ),
+                    dmc.NavLink(
+                        label="Ручное управление",
+                        active="exact",
+                        href="/train_controller/manual",
+                    ),
+                    dmc.NavLink(
+                        label="Карта",
+                        active="exact",
+                        href="/map",
+                    ),
+                ],
+            ),
+            dmc.NavLink(
+                label="Управление сервером",
+                leftSection=get_icon(icon="tabler:gauge"),
+                childrenOffset=28,
+                active="partial",
+                persistence=True,
+                persistence_type="session",
+                children=[
+                    dmc.NavLink(
+                        label="Параметры сервера",
+                        active="exact",
+                        href="/server/manage",
+                    ),
+                ],
+            ),
+            dmc.NavLink(
+                label="Инвентаризация",
+                leftSection=get_icon(icon="tabler:fingerprint"),
+                childrenOffset=28,
+                active="partial",
+                persistence=True,
+                persistence_type="session",
+                children=[
+                    dmc.NavLink(
+                        label="Поезда", active="exact", href="/inventory/trains"
+                    ),
+                    dmc.NavLink(
+                        label="Напольные устройства",
+                        childrenOffset=28,
+                        active="partial",
+                        persistence=True,
+                        persistence_type="session",
+                        children=[
+                            dmc.NavLink(
+                                label="Светофоры",
+                                active="exact",
+                                href="/inventory/outdoor/light",
+                            ),
+                            dmc.NavLink(
+                                label="Стрелки",
+                                active="exact",
+                                href="/inventory/outdoor/switch",
+                            ),
+                        ],
+                    ),
+                    dmc.NavLink(
+                        label="Строения", active="exact", href="/inventory/buildings"
+                    ),
+                ],
+            ),
         ],
         scrollbarSize=3,
-        scrollHideDelay=300
+        scrollHideDelay=300,
     )
