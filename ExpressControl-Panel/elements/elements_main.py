@@ -61,6 +61,7 @@ def get_header(brand):
                         id="timeDisplay",
                         style={"white-space": "nowrap"},
                         fw=600,
+                        visibleFrom='sm'
                     ),
                     theme_toggle,
                 ]
