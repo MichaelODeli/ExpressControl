@@ -26,6 +26,7 @@ app = dash.Dash(
     update_title=config["WEB_PAGE_LOADING_TITLE"],
     suppress_callback_exceptions=True,
     pages_folder=os.path.abspath("ExpressControl-Panel/pages"),
+    assets_folder=os.path.abspath("ExpressControl-Panel/assets")
 )
 
 

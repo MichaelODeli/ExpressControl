@@ -1,6 +1,5 @@
 import dash_mantine_components as dmc
 from dash_iconify import DashIconify
-from dash import html
 
 
 def get_icon(icon):
@@ -46,14 +45,6 @@ def get_header(brand):
                         persistence=True,
                         persistence_type="session",
                     ),
-                    # html.A(
-                    #     dmc.Title(brand, order=3),
-                    #     href="/",
-                    #     style={
-                    #         "text-decoration": "none",
-                    #         "color": "var(--mantine-color-text)",
-                    #     },
-                    # ),
                     dmc.NavLink(
                         label=dmc.Title(brand, order=3),
                         href="/",
@@ -63,7 +54,17 @@ def get_header(brand):
                 px="md",
                 wrap="nowrap",
             ),
-            theme_toggle,
+            dmc.Group(
+                [
+                    dmc.Text(
+                        "Загрузка времени...",
+                        id="timeDisplay",
+                        style={"white-space": "nowrap"},
+                        fw=600,
+                    ),
+                    theme_toggle,
+                ]
+            ),
         ],
         justify="space-between",
         style={"flex": 1},
@@ -75,7 +76,6 @@ def get_header(brand):
 def get_navbar():
     return dmc.ScrollArea(
         [
-            # dmc.NavLink(label="Управл"),
             dmc.NavLink(
                 label=dmc.Text("Управление макетом", fw=600),
                 leftSection=get_icon(icon="tabler:gauge"),
