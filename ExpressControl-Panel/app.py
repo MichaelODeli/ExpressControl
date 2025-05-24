@@ -63,7 +63,7 @@ app.layout = dmc.MantineProvider(
     id="mantine_theme",
     defaultColorScheme="light",
     theme={
-        # "primaryColor": "indigo",
+        "primaryColor": "grape",
     },
 )
 

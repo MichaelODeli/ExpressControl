@@ -77,7 +77,7 @@ def get_navbar():
         [
             # dmc.NavLink(label="Управл"),
             dmc.NavLink(
-                label="Управление макетом",
+                label=dmc.Text("Управление макетом", fw=600),
                 leftSection=get_icon(icon="tabler:gauge"),
                 childrenOffset=28,
                 active="partial",
@@ -102,7 +102,7 @@ def get_navbar():
                 ],
             ),
             dmc.NavLink(
-                label="Управление сервером",
+                label=dmc.Text("Управление сервером", fw=600),
                 leftSection=get_icon(icon="tabler:gauge"),
                 childrenOffset=28,
                 active="partial",
@@ -117,7 +117,7 @@ def get_navbar():
                 ],
             ),
             dmc.NavLink(
-                label="Инвентаризация",
+                label=dmc.Text("Инвентаризация", fw=600),
                 leftSection=get_icon(icon="tabler:fingerprint"),
                 childrenOffset=28,
                 active="partial",
