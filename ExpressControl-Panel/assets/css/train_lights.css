@@ -1,0 +1,30 @@
+.train_light-classic-light,
+.train_light-diamond-light {
+    /* aspect-ratio: 1/1; */
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+}
+
+.train_light-classic-box {
+    background-color: black;
+    padding: 5px;
+    width: max-content;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border: 0.3rem solid black;
+}
+
+
+.train_light-diamond-box {
+    width: 40px;
+    height: 40px;
+    background: black;
+    
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
