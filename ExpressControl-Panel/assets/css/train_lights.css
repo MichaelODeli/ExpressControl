@@ -4,7 +4,19 @@
     border-radius: 50%;
     height: 22px;
     width: 22px;
+    border: none !important;
     /* margin: 3px; */
+}
+
+.train_light-classic-light:hover,
+.train_light-diamond-light:hover {
+    animation: none !important;
+    transform: scale(0.95)
+}
+
+.train_light-classic-light:active,
+.train_light-diamond-light:active {
+    transform: scale(0.8)
 }
 
 .train_light-classic-box {
@@ -23,10 +35,38 @@
     height: 40px;
     background: black;
     border: 2px solid var(--mantine-color-text);
-    
+
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+.train_light-blinker {
+    animation: pulse 1.3s infinite;
+}
+
+.train_light-color-red {
+    background-color: red;
+}
+
+.train_light-color-yellow {
+    background-color: yellow;
+}
+
+.train_light-color-green {
+    background-color: green;
+}
+
+.train_light-color-purple {
+    background-color: #6600ff;
+}
+
+.train_light-color-white {
+    background-color: white;
+}
+
+.train_light-color-off {
+    background-color: #414040;
 }

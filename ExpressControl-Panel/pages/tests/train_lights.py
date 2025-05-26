@@ -1,5 +1,5 @@
 import dash_mantine_components as dmc
-from dash import Input, Output, callback, register_page
+from dash import Input, Output, callback, register_page, html
 
 register_page(__name__, path="/tests/train_lights", icon="fa-solid:home")
 
@@ -18,19 +18,16 @@ def light_generator(light_type: str, light_parameters: tuple):
 
     if light_type == "diamond":
         light = light_parameters[0]
-        light_color = list(light.keys())[0]
+        light_color = light["color"]
+        light_state = light["state"]
+        light_blink = light["blink"]
+        blinker_class = " train_light-blinker " if light_blink and light_state else " "
         return dmc.Flex(
             [
-                dmc.Box(
-                    style={
-                        "animation": (
-                            "pulse 1.3s infinite"
-                            if light[light_color] == "blink"
-                            else "none"
-                        ),
-                    },
-                    bg="white" if light[light_color] == "off" else light_color,
-                    className="train_light-diamond-light",
+                html.Button(
+                    className="train_light-diamond-light"
+                    + blinker_class
+                    + f"train_light-color-{light_color if light_state else 'off'}",
                 )
             ],
             className="train_light-diamond-box",
@@ -38,20 +35,21 @@ def light_generator(light_type: str, light_parameters: tuple):
             justify="center",
         )
     else:
-        for light in light_parameters:
+        for lights in light_parameters:
             light_stack = []
-            for light_color in light.keys():
+            for light in lights:
+                light_color = light["color"]
+                light_state = light["state"]
+                light_blink = light["blink"]
+                blinker_class = (
+                    " train_light-blinker " if light_blink and light_state else " "
+                )
+
                 light_stack += [
-                    dmc.Box(
-                        style={
-                            "animation": (
-                                "pulse 1.3s infinite"
-                                if light[light_color] == "blink"
-                                else "none"
-                            ),
-                        },
-                        bg="white" if light[light_color] == "off" else light_color,
-                        className="train_light-classic-light",
+                    html.Button(
+                        className="train_light-classic-light"
+                        + blinker_class
+                        + f"train_light-color-{light_color if light_state else 'off'}",
                     )
                 ]
             light_group += [
@@ -72,50 +70,53 @@ def layout():
                     light_generator(
                         "classic",
                         [
-                            {"yellow": "on", "green": "on"},
-                            {"red": "on", "yellow": "on"},
+                            [
+                                {"color": "yellow", "state": False, "blink": False},
+                                {"color": "green", "state": False, "blink": False},
+                            ],
+                            [
+                                {"color": "red", "state": False, "blink": False},
+                                {"color": "yellow", "state": False, "blink": False},
+                            ],
                         ],
                     ),
                     light_generator(
                         "classic",
                         [
-                            {"yellow": "off", "green": "on"},
-                            {"red": "off", "yellow": "off"},
+                            [
+                                {"color": "yellow", "state": False, "blink": False},
+                                {"color": "green", "state": False, "blink": False},
+                            ],
+                            [
+                                {"color": "red", "state": True, "blink": False},
+                                {"color": "yellow", "state": False, "blink": False},
+                            ],
                         ],
                     ),
                     light_generator(
                         "classic",
                         [
-                            {"yellow": "blink", "green": "off"},
-                            {"red": "off", "yellow": "off"},
+                            [
+                                {"color": "yellow", "state": True, "blink": True},
+                                {"color": "green", "state": False, "blink": False},
+                            ],
+                            [
+                                {"color": "red", "state": False, "blink": False},
+                                {"color": "yellow", "state": True, "blink": False},
+                            ],
                         ],
                     ),
                     light_generator(
                         "classic",
                         [
-                            {"yellow": "on", "green": "off"},
-                            {"red": "off", "yellow": "off"},
-                        ],
-                    ),
-                    light_generator(
-                        "classic",
-                        [
-                            {"yellow": "blink", "green": "off"},
-                            {"red": "off", "yellow": "on"},
-                        ],
-                    ),
-                    light_generator(
-                        "classic",
-                        [
-                            {"yellow": "on", "green": "off"},
-                            {"red": "off", "yellow": "on"},
-                        ],
-                    ),
-                    light_generator(
-                        "classic",
-                        [
-                            {"yellow": "off", "green": "off"},
-                            {"red": "on", "yellow": "off"},
+                            [
+                                {"color": "yellow", "state": False, "blink": True},
+                                {"color": "green", "state": True, "blink": False},
+                            ],
+                            [
+                                {"color": "red", "state": False, "blink": False},
+                                {"color": "yellow", "state": False, "blink": False},
+                            ],
                         ],
                     ),
                 ]
@@ -124,22 +125,22 @@ def layout():
                 [
                     light_generator(
                         "diamond",
-                        [{"yellow": "off"}],
+                        [{"color": "yellow", "state": False, "blink": False}],
                     ),
                     light_generator(
                         "diamond",
-                        [{"yellow": "on"}],
+                        [{"color": "yellow", "state": True, "blink": False}],
                     ),
                     light_generator(
                         "diamond",
-                        [{"yellow": "blink"}],
+                        [{"color": "yellow", "state": True, "blink": True}],
                     ),
                     light_generator(
                         "diamond",
-                        [{"green": "on"}],
+                        [{"color": "green", "state": True, "blink": False}],
                     ),
                 ],
-                gap='lg'
+                gap="lg",
             ),
         ]
     )
