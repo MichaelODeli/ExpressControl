@@ -14,7 +14,7 @@
     border-radius: 21px;
     -moz-border-radius: 21px;
     -webkit-border-radius: 21px;
-    border: 2px solid var(--mantine-color-default-border);
+    border: 2px solid var(--mantine-color-text);
 }
 
 
@@ -22,7 +22,7 @@
     width: 40px;
     height: 40px;
     background: black;
-    border: 2px solid var(--mantine-color-default-border);
+    border: 2px solid var(--mantine-color-text);
     
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
