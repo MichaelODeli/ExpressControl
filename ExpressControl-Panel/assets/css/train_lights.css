@@ -1,13 +1,4 @@
-.train_light-classic-light,
-.train_light-diamond-light {
-    /* aspect-ratio: 1/1; */
-    border-radius: 50%;
-    height: 22px;
-    width: 22px;
-    border: none !important;
-    /* margin: 3px; */
-}
-
+/* HOVER STYLES */
 .train_light-classic-light:hover,
 .train_light-diamond-light:hover {
     animation: none !important;
@@ -19,23 +10,51 @@
     transform: scale(0.8)
 }
 
-.train_light-classic-box {
-    background-color: black;
-    padding: 8px;
-    width: max-content;
-    border-radius: 21px;
-    -moz-border-radius: 21px;
-    -webkit-border-radius: 21px;
+/*  */
+/* LIGHT STYLES */
+/*  */
+.train_light-classic-light,
+.train_light-diamond-light {
+    border-radius: 50%;
+    border: none !important;
+}
+
+/* Size-specified light styles */
+.train_light-classic-light-sm,
+.train_light-diamond-light-sm {
+    height: 15px;
+    width: 15px;
+}
+
+.train_light-classic-light-md,
+.train_light-diamond-light-md {
+    height: 22px;
+    width: 22px;
+}
+
+.train_light-classic-light-lg,
+.train_light-diamond-light-lg {
+    height: 30px;
+    width: 30px;
+}
+
+/*  */
+/* BOXES STYLES */
+/*  */
+.train_light-classic-box, 
+.train_light-diamond-box {
     border: 2px solid var(--mantine-color-text);
+    background-color: black;
+}
+
+.train_light-classic-box {
+    width: max-content;
+    flex-direction: column;
+    align-items: center;
 }
 
 
 .train_light-diamond-box {
-    width: 40px;
-    height: 40px;
-    background: black;
-    border: 2px solid var(--mantine-color-text);
-
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -43,10 +62,45 @@
     transform: rotate(45deg);
 }
 
+/* Size-specified light styles */
+.train_light-classic-box-sm {
+    padding: 4px;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+}
+.train_light-classic-box-md {
+    padding: 8px;
+    border-radius: 21px;
+    -moz-border-radius: 21px;
+    -webkit-border-radius: 21px;
+}
+.train_light-classic-box-lg {
+    padding: 10px;
+    border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+}
+
+.train_light-diamond-box-sm {
+    width: 25px;
+    height: 25px;
+}
+.train_light-diamond-box-md {
+    width: 40px;
+    height: 40px;
+}
+.train_light-diamond-box-lg {
+    width: 55px;
+    height: 55px;
+}
+
+/* ANIMATIONS */
 .train_light-blinker {
     animation: pulse 1.3s infinite;
 }
 
+/* COLORS */
 .train_light-color-red {
     background-color: red;
 }
