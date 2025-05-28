@@ -8,8 +8,8 @@ def light_generator(light_type: str, light_parameters: tuple, light_size: str = 
     """Генератор светофоров в HTML
 
     Args:
-        light_type (str): строка с типом светофора.
-        light_parameters (tuple): список, описывающий конструкцию светофора.
+        light_type (str): строка с типом светофора ('classic', 'diamond').
+        light_parameters (tuple): список, описывающий конструкцию светофора. Формат: описание огня светофора - словарь, несколько огней в одной секции светофора - список словарей, несколько секций - список списков.
     """
 
     light_group = []
