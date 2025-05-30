@@ -144,7 +144,7 @@ def layout():
                         [
                             [
                                 {"color": "red", "state": False, "blink": False},
-                                {"color": "purple", "state": False, "blink": False},
+                                {"color": "blue", "state": False, "blink": False},
                             ],
                         ],
                         light_size="sm",
@@ -154,7 +154,7 @@ def layout():
                         [
                             [
                                 {"color": "red", "state": False, "blink": False},
-                                {"color": "purple", "state": True, "blink": False},
+                                {"color": "blue", "state": True, "blink": False},
                             ],
                         ],
                         light_size="md",

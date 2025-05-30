@@ -6,6 +6,7 @@ register_page(__name__, path="/", icon="fa-solid:home")
 def layout():
     return dmc.Stack(
         [
-            html.A('Тесты светофоров', href='/tests/train_lights')
+            html.A('Тесты светофоров', href='/tests/train_lights'),
+            html.A('Тесты знаков', href='/tests/train_signs')
         ]
     )

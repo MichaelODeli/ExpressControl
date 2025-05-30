@@ -2,7 +2,7 @@
 .train_light-classic-light:hover,
 .train_light-diamond-light:hover {
     animation: none !important;
-    transform: scale(0.95)
+    transform: scale(0.9)
 }
 
 .train_light-classic-light:active,
@@ -96,31 +96,43 @@
 }
 
 /* ANIMATIONS */
-.train_light-blinker {
+/* .train_light-blinker {
     animation: pulse 1.3s infinite;
+} */
+.train_light-blinker {
+    animation: pulse_v2 1.3s infinite;
 }
 
 /* COLORS */
+:root {
+    --light-red: red;
+    --light-yellow: yellow;
+    --light-green: green;
+    --light-blue: #0400ff;
+    --light-white: white;
+    --light-off: #414040;
+}
+
 .train_light-color-red {
-    background-color: red;
+    background-color: var(--light-red);
 }
 
 .train_light-color-yellow {
-    background-color: yellow;
+    background-color: var(--light-yellow);
 }
 
 .train_light-color-green {
-    background-color: green;
+    background-color: var(--light-green);
 }
 
-.train_light-color-purple {
-    background-color: #6600ff;
+.train_light-color-blue {
+    background-color: var(--light-blue);
 }
 
 .train_light-color-white {
-    background-color: white;
+    background-color: var(--light-white);
 }
 
 .train_light-color-off {
-    background-color: #414040;
+    background-color: var(--light-off);
 }
