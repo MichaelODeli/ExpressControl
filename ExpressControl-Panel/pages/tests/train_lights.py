@@ -8,8 +8,9 @@ def light_generator(light_type: str, light_parameters: tuple, light_size: str = 
     """Генератор светофоров в HTML
 
     Args:
-        light_type (str): строка с типом светофора ('classic', 'diamond').
+        light_type (str): строка с типом светофора ('classic', 'classic_v2', 'diamond').
         light_parameters (tuple): список, описывающий конструкцию светофора. Формат: описание огня светофора - словарь, несколько огней в одной секции светофора - список словарей, несколько секций - список списков.
+        light_size (str): размер светофора ('sm', 'md', 'lg'). По умолчанию - 'md'
     """
 
     light_group = []
@@ -59,23 +60,10 @@ def layout():
                         [
                             [
                                 {"color": "yellow", "state": False, "blink": False},
-                                {"color": "green", "state": False, "blink": False},
+                                {"color": "green", "state": True, "blink": False},
                             ],
                             [
                                 {"color": "red", "state": False, "blink": False},
-                                {"color": "yellow", "state": False, "blink": False},
-                            ],
-                        ],
-                    ),
-                    light_generator(
-                        "classic",
-                        [
-                            [
-                                {"color": "yellow", "state": False, "blink": False},
-                                {"color": "green", "state": False, "blink": False},
-                            ],
-                            [
-                                {"color": "red", "state": True, "blink": False},
                                 {"color": "yellow", "state": False, "blink": False},
                             ],
                         ],
@@ -93,31 +81,6 @@ def layout():
                             ],
                         ],
                     ),
-                ]
-            ),
-            dmc.Group(
-                [
-                    light_generator(
-                        "diamond",
-                        [[{"color": "yellow", "state": False, "blink": False}]],
-                    ),
-                    light_generator(
-                        "diamond",
-                        [[{"color": "yellow", "state": True, "blink": False}]],
-                    ),
-                    light_generator(
-                        "diamond",
-                        [[{"color": "yellow", "state": True, "blink": True}]],
-                    ),
-                    light_generator(
-                        "diamond",
-                        [[{"color": "green", "state": True, "blink": False}]],
-                    ),
-                ],
-                gap="lg",
-            ),
-            dmc.Group(
-                [
                     light_generator(
                         "classic",
                         [
@@ -134,6 +97,25 @@ def layout():
                             ],
                         ],
                     ),
+                ],
+                align='flex-start'
+            ),
+            dmc.Group(
+                [
+                    light_generator(
+                        "diamond",
+                        [[{"color": "green", "state": True, "blink": False}]],
+                    ),
+                    light_generator(
+                        "diamond",
+                        [[{"color": "yellow", "state": True, "blink": True}]],
+                    ),
+                ],
+                gap="lg",
+            ),
+            dmc.Group(
+                [
+                    
                 ],
                 align="flex-start",
             ),
@@ -191,6 +173,21 @@ def layout():
                     ),
                 ],
                 gap="lg",
+            ),
+                        dmc.Group(
+                [
+                    light_generator(
+                        "classic_v2",
+                        [
+                            [
+                                {"color": "red", "state": True, "blink": False},
+                                {"color": "blue", "state": False, "blink": False},
+                            ],
+                        ],
+                        light_size="md",
+                    ),
+                ],
+                align="flex-start",
             ),
         ]
     )
