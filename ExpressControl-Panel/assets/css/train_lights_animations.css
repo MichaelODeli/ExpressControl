@@ -9,8 +9,7 @@
 
 
 @keyframes pulse_v2 {
-  50% {
-    /* background-color: black; */
+  35%,65% {
     background-color: var(--light-off);
   }
 }
