@@ -1,7 +1,7 @@
 /* HOVER STYLES */
 .train_light-classic-light:hover,
 .train_light-diamond-light:hover {
-    animation: none !important;
+    /* animation: none !important; */
     transform: scale(0.9)
 }
 
