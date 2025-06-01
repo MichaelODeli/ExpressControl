@@ -7,6 +7,7 @@ def layout():
     return dmc.Stack(
         [
             html.A('Тесты светофоров', href='/tests/train_lights'),
-            html.A('Тесты знаков', href='/tests/train_signs')
+            html.A('Тесты знаков', href='/tests/train_signs'),
+            html.A('Ручное управление поездом', href='/train_controller/manual')
         ]
     )
