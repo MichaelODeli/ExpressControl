@@ -20,31 +20,14 @@
     padding-bottom: 0 !important;
 }
 
-/* .scale>text {
-    /* fill: var(--mantine-color-text);
-    fill: white;
-    font-family: var(--mantine-font-family);
-    font-size: 16px;
-    font-weight: 600;
+.train-stats-table {
+    background-color: var(--transparent-background);
+    border-radius: var(--mantine-radius-default);
+    max-width: max-content;
 }
 
-.daq-knob--light__label>label {
-    font-family: var(--mantine-font-family);
-    font-size: 16px;
-    font-weight: 600;
+.train-stats-table>tbody>tr>td {
+    padding: 5px;
+    white-space: inherit;
+    vertical-align: middle;
 }
-
-.mLADG .knob .base,
-.mLADG .knob .indent {
-    /* stroke: var(--mantine-color-default-border) !important; 
-}
-
-.knob>g>circle {
-    /* fill: var(--mantine-color-body) !important; 
-} 
-
-.daq-knob--light {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-} */
-

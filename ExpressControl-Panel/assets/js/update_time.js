@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const timeString = now.toLocaleTimeString();  
         
         document.getElementById('timeDisplay').innerText = dateString + ' ' + timeString; 
+        document.getElementById('timeDisplay_manual').innerText = dateString + ' ' + timeString; 
     }
 
     setInterval(updateTime, 1000); // Обновляем каждую секунду

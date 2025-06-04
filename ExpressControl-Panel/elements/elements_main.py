@@ -59,9 +59,8 @@ def get_header(brand):
                     dmc.Text(
                         "Загрузка времени...",
                         id="timeDisplay",
-                        style={"white-space": "nowrap"},
-                        fw=600,
-                        visibleFrom='sm'
+                        visibleFrom='sm',
+                        className='time_widget'
                     ),
                     theme_toggle,
                 ]

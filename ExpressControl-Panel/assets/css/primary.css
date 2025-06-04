@@ -1,0 +1,7 @@
+:root[data-mantine-color-scheme="dark"] {
+    --transparent-background: rgba(0, 0, 0, 0.5)
+}
+
+:root[data-mantine-color-scheme="light"] {
+    --transparent-background: rgba(255, 255, 255, 0.5)
+}
