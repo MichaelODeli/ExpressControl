@@ -1,6 +1,7 @@
 import dash_mantine_components as dmc
 from dash import Input, Output, callback, register_page, html, State
 from dash_iconify import DashIconify
+import dash_daq as daq
 
 register_page(__name__, path="/train_controller/manual", icon="fa-solid:home")
 
@@ -74,29 +75,58 @@ def layout():
         {
             "name": "Номер участка СЦБ",
             "value": "257-01 (А - Б)",
-            "icon": 'tabler:track',
+            "icon": "tabler:track",
         },
         {
             "name": "Ограничение",
             "value": "15/15 м/ч",
-            "icon": 'mdi:car-speed-limiter',
+            "icon": "mdi:car-speed-limiter",
         },
         {
             "name": "Расст. до светофора",
             "value": "20 м (НМ12)",
-            "icon": 'hugeicons:traffic-light',
+            "icon": "hugeicons:traffic-light",
         },
         {
             "name": "Расст. до стрелки",
             "value": "35 м (Б1)",
-            "icon": 'icon-park-outline:switch-track',
+            "icon": "icon-park-outline:switch-track",
         },
     ]
 
+    speed_regulator = daq.Knob(
+        size=150,
+        value=0,
+        color={
+            "gradient": True,
+            "ranges": {
+                "darkblue": [-10, -7],
+                "cyan": [-7, 0],
+                "green": [0, 4],
+                "yellow": [4, 8],
+                "red": [8, 10],
+            },
+        },
+        scale={
+            "labelInterval": 2,
+            "interval": 1,
+        },
+        max=10,
+        min=-10,
+        digits=0,
+        # showCurrentValue=True,
+        # label="Скорость",
+        # labelPosition="bottom",
+    )
+
     return dmc.Grid(
         [
-            # dmc.GridCol("Col1", bg="rgba(255, 0, 0, 0.3)", span=2, h="100%"),
-            dmc.GridCol("Col2", bg="rgba(0, 255, 0, 0.3)", span="auto"),
+            dmc.GridCol(
+                dmc.Box("Col2", h="100%", w="100%", bg="rgba(0, 255, 0, 0.3)"),
+                span="auto",
+                pt=0,
+                pb=0,
+            ),
             dmc.GridCol(
                 [
                     dmc.Stack(
@@ -183,16 +213,18 @@ def layout():
                                 gap="sm",
                                 align="flex-end",
                             ),
-                            dmc.Text("Элементы управления"),
+                            speed_regulator,
                         ],
                         gap=0,
                         justify="space-between",
                         h="100%",
                         w="100%",
+                        align="flex-end",
                     ),
                 ],
                 span="3",
-                bg="rgba(255, 0, 217, 0.3)",
+                # bg="rgba(255, 0, 217, 0.3)",
+                p="sm",
             ),
         ],
         className="manage-grid",

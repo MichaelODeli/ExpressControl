@@ -62,7 +62,7 @@ layout = dmc.AppShell(
 app.layout = dmc.MantineProvider(
     layout,
     id="mantine_theme",
-    defaultColorScheme="light",
+    defaultColorScheme="dark",
     theme={
         "primaryColor": "grape",
     },

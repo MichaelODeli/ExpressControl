@@ -15,19 +15,54 @@
     flex-direction: column-reverse;
     align-items: flex-end;
 }
-
-.mantine-AppShell-main {
-    padding-bottom: 0 !important;
-}
-
 .train-stats-table {
     background-color: var(--transparent-background);
     border-radius: var(--mantine-radius-default);
     max-width: max-content;
+    transition: background-color 0.2s;
+}
+
+.train-stats-table:hover {
+    background-color: var(--transparent-background-hover);
 }
 
 .train-stats-table>tbody>tr>td {
     padding: 5px;
     white-space: inherit;
     vertical-align: middle;
+}
+
+
+
+.scale>text {
+    fill: var(--mantine-color-text);
+    /* fill: white; */
+    font-family: var(--mantine-font-family);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.daq-knob--light__label>label {
+    font-family: var(--mantine-font-family);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.mLADG .knob .base,
+.mLADG .knob .indent {
+    stroke: var(--mantine-color-default-border) !important;
+}
+
+.knob>g>circle {
+    fill: var(--mantine-color-body) !important;
+} 
+
+.daq-knob--light {
+    background: var(--transparent-background);
+    border-radius: var(--mantine-radius-lg);
+    transition: background-color 0.2s;
+}
+
+.daq-knob--light:hover {
+    background-color: var(--transparent-background-hover);
 }

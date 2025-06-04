@@ -21,6 +21,7 @@ def get_header(brand):
         id="color-scheme-toggle",
         persistence=True,
         color="grey",
+        checked=True
     )
 
     return dmc.Group(
