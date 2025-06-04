@@ -1,5 +1,6 @@
 .manage-grid {
-    height: calc(99vh - var(--app-shell-header-height) - var(--app-shell-padding));
+    height: calc(100dvh - var(--app-shell-padding));
+    /* height: 100dvh; */
     background-image: url(/assets/img/in_cabin.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,8 +16,12 @@
     align-items: flex-end;
 }
 
-.scale>text {
-    /* fill: var(--mantine-color-text); */
+.mantine-AppShell-main {
+    padding-bottom: 0 !important;
+}
+
+/* .scale>text {
+    /* fill: var(--mantine-color-text);
     fill: white;
     font-family: var(--mantine-font-family);
     font-size: 16px;
@@ -31,14 +36,15 @@
 
 .mLADG .knob .base,
 .mLADG .knob .indent {
-    /* stroke: var(--mantine-color-default-border) !important; */
+    /* stroke: var(--mantine-color-default-border) !important; 
 }
 
 .knob>g>circle {
-    /* fill: var(--mantine-color-body) !important; */
-}
+    /* fill: var(--mantine-color-body) !important; 
+} 
 
 .daq-knob--light {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 20px;
-}
+} */
+

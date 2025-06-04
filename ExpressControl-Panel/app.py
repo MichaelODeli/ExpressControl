@@ -49,7 +49,7 @@ layout = dmc.AppShell(
             ]
         ),
     ],
-    header={"height": 60},
+    header={"height": 60, "collapsed": False},
     navbar={
         "width": 300,
         "breakpoint": "sm",
