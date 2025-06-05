@@ -1,12 +1,12 @@
-.manage-grid {
+.train-manage-grid {
     height: calc(100dvh - var(--app-shell-padding));
     /* height: 100dvh; */
-    background-image: url(/assets/img/in_cabin.jpg);
+    /* background-image: url(/assets/img/in_cabin.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.manage-grid>.mantine-Grid-inner {
+.train-manage-grid>.mantine-Grid-inner {
     height: 100% !important;
 }
 
