@@ -2,6 +2,7 @@ import dash_mantine_components as dmc
 from dash import Input, Output, callback, register_page, html, State
 from dash_iconify import DashIconify
 import dash_daq as daq
+from dash_extensions import DeferScript
 
 register_page(__name__, path="/train_controller/manual", icon="fa-solid:home")
 
@@ -237,8 +238,11 @@ def layout():
                 # bg="rgba(255, 0, 217, 0.3)",
                 p="sm",
             ),
+            # DeferScript(src="ExpressControl-Panel/assets/js/vidbg.js"),
+            DeferScript(src="ExpressControl-Panel/assets/js/video_runner.js"),
         ],
-        className="manage-grid",
+        className="train-manage-grid",
+        id='train-manage-grid',
         align="stretch",
         # maw="100vw",
     )
