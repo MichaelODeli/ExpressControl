@@ -166,7 +166,11 @@ def layout():
     return dmc.Grid(
         [
             dmc.GridCol(
-                dmc.Box("Col2", h="100%", w="100%", bg="rgba(0, 255, 0, 0.3)"),
+                dmc.Box(
+                    h="100%",
+                    w="100%",
+                    style={"border-right": "3px dashed red"},
+                ),
                 span="auto",
                 pt=0,
                 pb=0,
