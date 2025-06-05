@@ -7,53 +7,6 @@ register_page(__name__, path="/train_controller/manual", icon="fa-solid:home")
 
 
 def layout():
-    controls_stack_content = [
-        [
-            {
-                "element_id": "train_manual-header_control",
-                "default_value": "header_show",
-                "type": "segment",
-            },
-            {
-                "id": "header_show",
-                "icon": "octicon:fold-down-24",
-                "tooltip_text": "Показать хедер",
-            },
-            {
-                "id": "header_hide",
-                "icon": "octicon:fold-up-24",
-                "tooltip_text": "Скрыть хедер",
-            },
-        ],
-        [
-            {
-                "element_id": "train_manual-light_control",
-                "default_value": "light_off",
-                "type": "segment",
-            },
-            {
-                "id": "light_on",
-                "icon": "mdi:car-light-high",
-                "tooltip_text": "Включить свет",
-            },
-            {
-                "id": "light_off",
-                "icon": "mdi:car-light-fog",
-                "tooltip_text": "Выключить свет",
-            },
-        ],
-        [
-            {
-                "element_id": "train_manual-switch_control",
-                "type": "button",
-            },
-            {
-                "icon": "icon-park-outline:switch-track",
-                "tooltip_text": "Переключить ближайшую стрелку",
-            },
-        ],
-    ]
-
     train_stats_table_content = [
         {"name": "Номер", "value": "959Э", "icon": "tabler:number"},
         {
@@ -94,6 +47,96 @@ def layout():
         },
     ]
 
+    train_table_stats = dmc.Table(
+        dmc.TableTbody(
+            [
+                dmc.TableTr(
+                    [
+                        dmc.TableTd(
+                            dmc.Center(
+                                DashIconify(
+                                    icon=element["icon"],
+                                    height=22,
+                                ),
+                            )
+                        ),
+                        dmc.TableTd(
+                            dmc.Text(
+                                element["name"],
+                                size="md",
+                            ),
+                        ),
+                        dmc.TableTd(
+                            dmc.Text(
+                                element["value"],
+                                size="md",
+                            ),
+                        ),
+                    ]
+                )
+                for element in train_stats_table_content
+            ]
+        ),
+        className="train-stats-table",
+    )
+
+    controls_stack_content = [
+        [
+            {"type": "other"},
+            dmc.Text(
+                "Загрузка времени...",
+                id="timeDisplay_manual",
+                className="time_widget time_widget_manual",
+                size="lg",
+            ),
+        ],
+        [
+            {
+                "element_id": "train_manual-header_control",
+                "default_value": "header_show",
+                "type": "segment",
+            },
+            {
+                "id": "header_show",
+                "icon": "octicon:fold-down-24",
+                "tooltip_text": "Показать хедер",
+            },
+            {
+                "id": "header_hide",
+                "icon": "octicon:fold-up-24",
+                "tooltip_text": "Скрыть хедер",
+            },
+        ],
+        [{"type": "other"}, train_table_stats],
+        [
+            {
+                "element_id": "train_manual-light_control",
+                "default_value": "light_off",
+                "type": "segment",
+            },
+            {
+                "id": "light_on",
+                "icon": "mdi:car-light-high",
+                "tooltip_text": "Включить свет",
+            },
+            {
+                "id": "light_off",
+                "icon": "mdi:car-light-fog",
+                "tooltip_text": "Выключить свет",
+            },
+        ],
+        [
+            {
+                "element_id": "train_manual-switch_control",
+                "type": "button",
+            },
+            {
+                "icon": "icon-park-outline:switch-track",
+                "tooltip_text": "Переключить ближайшую стрелку",
+            },
+        ],
+    ]
+
     speed_regulator = daq.Knob(
         size=150,
         value=0,
@@ -114,6 +157,7 @@ def layout():
         max=10,
         min=-10,
         digits=0,
+        disabled=True,
         # showCurrentValue=True,
         # label="Скорость",
         # labelPosition="bottom",
@@ -133,48 +177,6 @@ def layout():
                         [
                             dmc.Stack(
                                 [
-                                    dmc.Text(
-                                        "Загрузка времени...",
-                                        id="timeDisplay_manual",
-                                        className="time_widget time_widget_manual",
-                                        size="lg",
-                                    ),
-                                    dmc.Table(
-                                        dmc.TableTbody(
-                                            [
-                                                dmc.TableTr(
-                                                    [
-                                                        dmc.TableTd(
-                                                            dmc.Center(
-                                                                DashIconify(
-                                                                    icon=element[
-                                                                        "icon"
-                                                                    ],
-                                                                    height=22,
-                                                                ),
-                                                            )
-                                                        ),
-                                                        dmc.TableTd(
-                                                            dmc.Text(
-                                                                element["name"],
-                                                                size="md",
-                                                            ),
-                                                        ),
-                                                        dmc.TableTd(
-                                                            dmc.Text(
-                                                                element["value"],
-                                                                size="md",
-                                                            ),
-                                                        ),
-                                                    ]
-                                                )
-                                                for element in train_stats_table_content
-                                            ]
-                                        ),
-                                        className="train-stats-table",
-                                    ),
-                                ]
-                                + [
                                     (
                                         dmc.SegmentedControl(
                                             id=segment[0]["element_id"],
@@ -195,17 +197,22 @@ def layout():
                                             ],
                                         )
                                         if segment[0]["type"] == "segment"
-                                        else dmc.Tooltip(
-                                            dmc.Button(
-                                                DashIconify(
-                                                    icon=segment[-1]["icon"], height=24
+                                        else (
+                                            dmc.Tooltip(
+                                                dmc.Button(
+                                                    DashIconify(
+                                                        icon=segment[-1]["icon"],
+                                                        height=24,
+                                                    ),
+                                                    id=segment[0]["element_id"],
+                                                    variant="default",
                                                 ),
-                                                id=segment[0]["element_id"],
-                                                variant="default",
-                                            ),
-                                            label=segment[-1]["tooltip_text"],
-                                            radius="sm",
-                                            position="top",
+                                                label=segment[-1]["tooltip_text"],
+                                                radius="sm",
+                                                position="top",
+                                            )
+                                            if segment[0]["type"] == "button"
+                                            else segment[1]
                                         )
                                     )
                                     for segment in controls_stack_content
