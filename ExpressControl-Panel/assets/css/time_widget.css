@@ -1,0 +1,13 @@
+.time_widget, .time_widget_manual {
+    width: 175px;
+    white-space: nowrap;
+    font-weight: 600;
+    text-align: center;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: var(--mantine-radius-default);
+}
+
+.time_widget_manual {
+    background-color: var(--transparent-background);
+}

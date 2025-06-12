@@ -1,0 +1,13 @@
+:root[data-mantine-color-scheme="dark"] {
+    --transparent-background: rgba(0, 0, 0, 0.55);
+    --transparent-background-hover: rgba(0, 0, 0, 0.7);
+}
+
+:root[data-mantine-color-scheme="light"] {
+    --transparent-background: rgba(255, 255, 255, 0.55);
+    --transparent-background-hover: rgba(255, 255, 255, 0.7);
+}
+
+.mantine-AppShell-main {
+    padding-bottom: 0 !important;
+}
